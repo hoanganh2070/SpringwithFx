@@ -1,8 +1,10 @@
 package com.example.springwithfx.repository;
 
 import com.example.springwithfx.model.HoKhau;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface HoKhauRepository extends JpaRepository<HoKhau, Long> {
+@Repository
+public interface HoKhauRepository extends CrudRepository<HoKhau, Long> {
 
 }

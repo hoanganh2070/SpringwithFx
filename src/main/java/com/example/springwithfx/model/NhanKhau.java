@@ -3,6 +3,7 @@ package com.example.springwithfx.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
@@ -13,19 +14,27 @@ import java.util.Date;
 public class NhanKhau {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     private String cmnd;
     private String hoTen;
     private Date ngaySinh;
     private String gioiTinh;
-    private String soDienThoai;
+    private String noiSinh;
+    private String nguyenQuan;
+    private String danToc;
+    private String ngheNghiep;
+    @UpdateTimestamp
+    private Date ngayCap;
+    private String noiCap;
+    private String quanHeVoiChuHo;
 
     @ManyToOne
-    @JoinColumn(name = "hoKhau_id")
+    @JoinTable(
+            name = "nhankhau_hokhau",
+            joinColumns = @JoinColumn(name = "nhankhau_id"),
+            inverseJoinColumns = @JoinColumn(name = "hokhau_id"))
     private HoKhau hoKhau;
 
-    @OneToOne(mappedBy = "chuHo")
+    @OneToOne (mappedBy = "chuHo")
     private HoKhau chuHoKhau;
 
 

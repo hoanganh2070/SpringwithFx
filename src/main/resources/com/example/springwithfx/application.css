@@ -1,0 +1,92 @@
+/* styles.css */
+
+
+.section-label {
+    -fx-text-fill: #3498db;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0;
+}
+
+.label {
+
+    -fx-text-fill: #2c3e50;
+}
+
+.text-field {
+
+    -fx-padding: 8;
+    -fx-border-radius: 5;
+    -fx-border-color: #bdc3c7;
+    -fx-background-color: #ecf0f1;
+}
+
+
+.table-view {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14pt;
+}
+
+.table-view .column-header {
+    -fx-font-size: 12pt;
+    -fx-fill: white;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #81C784;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell {
+    -fx-alignment: CENTER;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0.5;
+    -fx-padding: 5 10 5 10;
+}
+
+.table-view .scroll-bar {
+    -fx-background-color: #ddd;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #E0E0E0;
+}
+
+
+#searchButton:hover {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+}
+
+#plusButton{
+    -fx-background-color: #0dcaf0; -fx-font-weight: 900; -fx-font-size: 19
+}
+
+#plusButton:hover{
+    -fx-background-color: #1b82ab;
+}
+
+#deleteButton {
+    -fx-background-color: #fd4544;
+    -fx-cursor: hand;
+}
+
+#deleteButton:hover {
+    -fx-background-color: #e22a53;
+}
+
+#noneButton{
+    -fx-background-color:  #a8f7f7;
+    -fx-cursor: hand;
+}
+
+#noneButton:hover{
+    -fx-background-color: #65dfdf;
+}
+
+
+
