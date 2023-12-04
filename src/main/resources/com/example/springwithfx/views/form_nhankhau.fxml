@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="772.0" prefWidth="1489.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="772.0" prefWidth="1489.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.springwithfx.controller.NhanKhauController">
    <Label layoutX="890.0" layoutY="24.0" prefHeight="51.0" prefWidth="318.0" style="-fx-font-size: 25px" text="Thông tin nhân khẩu:">
       <font>
          <Font size="26.0" />
@@ -36,17 +36,17 @@
       <font>
          <Font size="18.0" />
       </font></Label>
-   <TextField fx:id="occupationField" layoutX="814.0" layoutY="101.0" prefHeight="38.0" prefWidth="538.0" styleClass="text-field" />
+   <TextField fx:id="idField" layoutX="814.0" layoutY="101.0" prefHeight="38.0" prefWidth="538.0" styleClass="text-field" />
    <Label layoutX="675.0" layoutY="460.0" text="Nghề nghiệp:">
       <font>
          <Font size="19.0" />
       </font></Label>
-   <TextField fx:id="idCardField" layoutX="821.0" layoutY="453.0" prefHeight="38.0" prefWidth="538.0" styleClass="text-field" />
+   <TextField fx:id="jobField" layoutX="821.0" layoutY="453.0" prefHeight="38.0" prefWidth="538.0" styleClass="text-field" />
    <Label layoutX="672.0" layoutY="107.0" prefHeight="26.0" prefWidth="102.0" text="Số CCCD:">
       <font>
          <Font size="19.0" />
       </font></Label>
-   <ComboBox fx:id="relationshipComboBox" layoutX="925.0" layoutY="512.0" prefHeight="38.0" prefWidth="400.0" styleClass="text-field">
+   <ComboBox fx:id="relationshipBox" layoutX="890.0" layoutY="512.0" prefHeight="38.0" prefWidth="158.0" styleClass="text-field">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Chủ hộ" />
@@ -60,7 +60,7 @@
          <Font size="19.0" />
       </font></Label>
    <HBox layoutX="340.0" layoutY="360.0" />
-   <Button layoutX="925.0" layoutY="612.0" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #0d6efd;" text="Tiếp" textFill="#faf4f4">
+   <Button onAction="#Them" layoutX="922.0" layoutY="597.0" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #0d6efd;" text="Thêm" textFill="#faf4f4">
       <font>
          <Font size="21.0" />
       </font></Button>
@@ -75,6 +75,12 @@
       </font>
    </RadioButton>
    <Label layoutX="672.0" layoutY="275.0" prefHeight="16.0" prefWidth="92.0" text="Giới tính:">
+      <font>
+         <Font size="19.0" />
+      </font>
+   </Label>
+   <TextField fx:id="addressField" layoutX="1193.0" layoutY="512.0" prefHeight="38.0" prefWidth="166.0" styleClass="text-field" />
+   <Label layoutX="1067.0" layoutY="519.0" text="Mã hộ khẩu:">
       <font>
          <Font size="19.0" />
       </font>

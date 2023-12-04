@@ -37,7 +37,7 @@ public class StageManager {
         fxmlLoader.setControllerFactory(this.springContext.getApplicationContext()::getBean);
         scene = new Scene(fxmlLoader.load(),1280,720);
         stage.setScene(scene);
-        Image icon = new Image(getClass().getResourceAsStream("../images/frog.jpg"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../images/frog.jpg")));
         String css =  Objects.requireNonNull(this.getClass().getResource("../application.css")).toExternalForm();
         scene.getStylesheets().add(css);
         stage.getIcons().add(icon);

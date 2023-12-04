@@ -20,7 +20,7 @@ public class MainApplication extends Application {
     public void init() throws Exception {
         super.init();
         this.applicationContext = new SpringApplicationBuilder(SpringwithfxApplication.class).run();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("views/hokhau.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("views/nhankhau.fxml"));
         fxmlLoader.setControllerFactory(this.applicationContext::getBean);
         root = fxmlLoader.load();
 

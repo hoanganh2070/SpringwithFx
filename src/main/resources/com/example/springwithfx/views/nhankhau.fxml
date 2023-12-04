@@ -5,22 +5,60 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="../application.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.springwithfx.controller.PanelController">
-        <TableView fx:id="personTable" layoutX="275.0" layoutY="103.0" prefHeight="779.0" prefWidth="1204.0">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="../application.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.springwithfx.controller.NhanKhauTableController">
+        <TableView fx:id="personTable" layoutX="245.0" layoutY="103.0" prefHeight="779.0" prefWidth="1234.0">
             <columns>
-                <TableColumn prefWidth="129.0" text="CCCD" />
-                <TableColumn prefWidth="131.0" text="Họ và tên" />
-                <TableColumn prefWidth="93.0" text="Ngày sinh" />
-                <TableColumn text="Giới tính" />
-                <TableColumn prefWidth="129.0" text="Nơi sinh" />
-                <TableColumn prefWidth="120.0" text="Quê quán" />
-                <TableColumn text="Dân tộc" />
-                <TableColumn prefWidth="115.0" text="Nghề nghiệp" />
-                <TableColumn prefWidth="168.0" text="Quan hệ với chủ hộ" />
-         <TableColumn prefWidth="168.0" text="Chức năng" />
+                <TableColumn prefWidth="129.0" text="CCCD" >
+                          <cellValueFactory>
+                                <PropertyValueFactory property="cmnd" />
+                            </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn prefWidth="131.0" text="Họ và tên">
+                    <cellValueFactory>
+                                <PropertyValueFactory property="hoTen" />
+                            </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="104.0" text="Ngày sinh" >
+                    <cellValueFactory>
+                                <PropertyValueFactory property="ngaySinh" />
+                            </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="91.0" text="Giới tính" >
+                    <cellValueFactory>
+                                <PropertyValueFactory property="gioiTinh" />
+                            </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="129.0" text="Nơi sinh" >
+                    <cellValueFactory>
+                                <PropertyValueFactory property="noiSinh" />
+                            </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="120.0" text="Quê quán" >
+                    <cellValueFactory>
+                                <PropertyValueFactory property="nguyenQuan" />
+                            </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Dân tộc" >
+                    <cellValueFactory>
+                                <PropertyValueFactory property="danToc" />
+                            </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="123.0" text="Nghề nghiệp" >
+                    <cellValueFactory>
+                                <PropertyValueFactory property="ngheNghiep" />
+                            </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="168.0" text="Quan hệ với chủ hộ">
+                    <cellValueFactory>
+                                <PropertyValueFactory property="quanHeVoiChuHo" />
+                            </cellValueFactory>
+                </TableColumn>
+         <TableColumn fx:id="actionColumn" prefWidth="168.0" text="Chức năng" />
             </columns>
         </TableView>
-   <Button fx:id="plusButton" layoutX="1271.0" layoutY="36.0" mnemonicParsing="false" onAction="#switchNhauKhau" prefHeight="40.0" prefWidth="208.0" text="Thêm" textFill="#f2f9fc">
+   <Button fx:id="plusButton" onAction="#switchNhanKhau" layoutX="1271.0" layoutY="36.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="208.0" text="Thêm" textFill="#f2f9fc">
       <graphic>
          <FontAwesomeIconView fill="#fcf6f6" glyphName="PLUS" size="18">
             <font>
@@ -28,8 +66,8 @@
             </font></FontAwesomeIconView>
       </graphic>
    </Button>
-   <TextField layoutX="275.0" layoutY="43.0" prefHeight="40.0" style="-fx-pref-width: 400; -fx-background-color: #f9f9f9;     -fx-border-color: #ddd;     -fx-border-width: 1;     -fx-padding: 5;     " />
-    <Button fx:id="searchButton" layoutX="633.0" layoutY="43.0" prefHeight="40.0" prefWidth="42.0" style="-fx-background-color: #4CAF50;     -fx-text-fill: white;    ">
+   <TextField fx:id="searchField" layoutX="275.0" layoutY="43.0" prefHeight="40.0" style="-fx-pref-width: 400; -fx-background-color: #f9f9f9;     -fx-border-color: #ddd;     -fx-border-width: 1;     -fx-padding: 5;     " />
+    <Button fx:id="searchButton" onAction="#searchHoTen" layoutX="633.0" layoutY="43.0" prefHeight="40.0" prefWidth="42.0" style="-fx-background-color: #4CAF50;     -fx-text-fill: white;    ">
         <graphic>
             <FontAwesomeIconView fill="white" glyphName="SEARCH" size="16" />
         </graphic>

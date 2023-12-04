@@ -6,6 +6,7 @@ import com.example.springwithfx.model.HoKhauDto;
 import com.example.springwithfx.model.NhanKhau;
 import com.example.springwithfx.model.NhanKhauHolder;
 import com.example.springwithfx.service.HoKhauService;
+import com.example.springwithfx.views.SuccesDialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,13 +33,15 @@ public class HoKhauController {
     private Stage stage;
     private Scene scene;
     private NhanKhauHolder nhanKhauHolder = NhanKhauHolder.getInstance();
+    private final HoKhauService hoKhauService;
+    private final StageManager stageManager;
+
+    public HoKhauController(HoKhauService hoKhauService, StageManager stageManager) {
+        this.hoKhauService = hoKhauService;
+        this.stageManager = stageManager;
+    }
 
 
-    @Autowired
-    private HoKhauService hoKhauService;
-
-    @Autowired
-    private StageManager stageManager;
 
     @FXML
     public TextField fullNameField;
@@ -115,11 +118,8 @@ public class HoKhauController {
         hoKhau.setChuHo(nhanKhau);
         hoKhauService.saveHoKhau(hoKhau);
         log.info("Them thanh cong");
-        Stage stage1 = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/success.fxml"));
-        Scene scene1 = new Scene(fxmlLoader.load(), 450, 100);
-        stage1.setScene(scene1);
-        stage1.show();
+        SuccesDialog succesDialog = new SuccesDialog();
+
    }
 
 

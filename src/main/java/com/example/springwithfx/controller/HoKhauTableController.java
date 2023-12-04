@@ -2,7 +2,10 @@ package com.example.springwithfx.controller;
 
 import com.example.springwithfx.config.StageManager;
 import com.example.springwithfx.model.HoKhauDto;
+import com.example.springwithfx.model.NhanKhau;
 import com.example.springwithfx.service.HoKhauService;
+import com.example.springwithfx.service.NhanKhauService;
+import com.example.springwithfx.views.WarningDialog;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -13,12 +16,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.example.springwithfx.views.WarningDialog;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,11 +42,16 @@ public class HoKhauTableController implements Initializable {
     public TableColumn actionColumn;
 
 
-    @Autowired
-    private HoKhauService hoKhauService;
 
-    @Autowired
-    private StageManager stageManager;
+    private final HoKhauService hoKhauService;
+    private final StageManager stageManager;
+    private final NhanKhauService nhanKhauService;
+
+    public HoKhauTableController(HoKhauService hoKhauService, StageManager stageManager, NhanKhauService nhanKhauService) {
+        this.hoKhauService = hoKhauService;
+        this.stageManager = stageManager;
+        this.nhanKhauService = nhanKhauService;
+    }
 
 
     @Override
@@ -67,7 +76,7 @@ public class HoKhauTableController implements Initializable {
                 deleteIcon.setOnMouseClicked(event -> {
                     WarningDialog warningDialog = new WarningDialog();
 
-                    // Show and wait for the user's response
+
                     Optional<ButtonType> result = warningDialog.showAndWait();
                     if (result.isPresent() && result.get() == ButtonType.YES) {
                         HoKhauDto hoKhauDto = getTableView().getItems().get(getIndex());
@@ -76,11 +85,7 @@ public class HoKhauTableController implements Initializable {
                     } else {
                         System.out.println("no");
                     }
-                    }
-
-
-
-
+                }
                 );
 
                 editIcon.setOnMouseClicked(event -> {
@@ -89,7 +94,9 @@ public class HoKhauTableController implements Initializable {
                     try {
                         stageManager.switchScene(stage, scene, fxmlLoader, event);
                         UpdateChuHoController chuHoController = fxmlLoader.getController();
-                        chuHoController.InitData(hoKhauDto.getId());
+                        NhanKhau nhanKhau = nhanKhauService.getNhanKhau(Long.parseLong(hoKhauDto.getChuHo()));
+                        chuHoController.InitData(hoKhauDto.getId(),nhanKhau);
+
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
